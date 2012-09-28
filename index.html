@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+	<head>
+	  	<title>Helpful Links</title>
+	  	<meta http-equiv='Content-Type' content='application/xhtml+xml; charset=utf-8'>
+	  	<link rel='stylesheet' href='css/styles.css'>
+  	</head>
+
+	<body>
+
+	<div id='container'>
+
+		<div id='1' class='helpful-links horizontal'></div>
+
+	</div>
+
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js' charset='utf-8'></script>
+	<script type='text/javascript' src='js/jquery.helpfulLinks.js'></script>
+	<script type='text/javascript'>
+	$().ready(function() {
+   
+		$('#1.helpful-links').helpfulLinks({
+			title: 'My Helpful Links:',
+			links: [
+				{ icon: 'external-link', title: 'MLB', url: 'http://www.mlb.com' },
+				{ icon: 'external-link', title: 'Wells Fargo', url: 'http://www.wellsfargo.com' },
+				{ icon: 'external-link', title: 'LinkedIn', url: 'http://www.linkedin.com' },
+				{ icon: 'external-link', title: 'NBA', url: 'http://www.nba.com' }
+			]
+		});
+	
+	});
+
+	</script>
+	<script type='text/javascript' src='js/positionLinks.js'></script>
+
+	</body>
+
+</html>
