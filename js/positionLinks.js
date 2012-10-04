@@ -50,7 +50,8 @@ $().ready(function() {
 				
 				imgWidths.forEach(function(o){
 					$(helpfulLinks+' .links > a > span').css('width',o.textWidth);
-				})
+				});
+				
 				$(helpfulLinks+' .links > a > span').css('width',imgWidths.textWidth);
 				$(helpfulLinks+' .links > a').each(function(){
 					if(eachLinkMarginLeftToCenterAmt[count] > 0){

@@ -70,10 +70,6 @@ a{ text-decoration: none; }
 	margin-right: 10px;
 }
 
-.helpful-links.horizontal .helpful-icon{
-	margin-right: 5px; /* CAN'T BE MARGIN LEFT, CODE IS LOOKING FOR MARGIN RIGHT! */
-}
-
 .helpful-links.horizontal .links,
 .helpful-links.horizontal .links .helpful-link{
 	overflow: hidden;
