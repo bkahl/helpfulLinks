@@ -89,10 +89,19 @@ a{ text-decoration: none; }
 	color: #5f87b9;
 }
 
-.external-link{
-	width: 10px;
-	height: 10px;
-	background: url(../images/ext-link.png) no-repeat;
+.helpful-link{
+    display: block;
+    padding: 0 0 0 22px;
+    position: relative;
+}
+
+.helpful-link .external-link{
+	width: 16px;
+	height: 16px;
+	position: absolute;
+    top: 1px;
+    left: 0;
+	background: url(../images/custom-icons-sprite.png) 0 368px;
 }
 
 

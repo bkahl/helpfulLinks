@@ -18,8 +18,8 @@ $().ready(function() {
 					containerLeftAndRightPaddingTotal = parseInt($(helpfulLinks).css('padding-left').split("px")[0],10)+parseInt($(helpfulLinks).css('padding-right').split("px")[0],10),
 					helpfulLinksTitleMarginRightAmt = parseInt($(helpfulLinks+' div').css('margin-right').split("px")[0],10)*howManyChildren,
 					eachLinkMarginLeftToCenterAmt = [],
+					imgWidths = [],
 					maxAmtOfHelpfulLinks = 3,
-					iconWidths = [],
 					i, count = 0, imgCount = 0;
 					
 				$(helpfulLinks+' > div').each(function(){
@@ -28,13 +28,15 @@ $().ready(function() {
 				
 				widthOfLinkBlocks = Math.floor(((((parentWidth-containerLeftAndRightPaddingTotal)-helpfulLinksTitleMarginRightAmt)-childWidths[0])/howManyLinks)-howManyLinks);
 				
-				$(helpfulLinks+' div.helpful-icon').each(function(){
-					var imgWidth = parseInt($('.'+$(this).attr('class').split(" ")[0]).css('width').split("px")[0],10)+parseInt($(this).css('margin-right').split("px")[0],10);
-					iconWidths.push(imgWidth);		
-				});
-				
-				$(helpfulLinks+' div.helpful-link').each(function(){
-					$(this).css('width',widthOfLinkBlocks-iconWidths[imgCount]);
+				$(helpfulLinks+' .helpful-link').each(function(){
+					var imgWidth = parseInt( $(this).css('padding-left'), 10 ),
+						img = {
+							paddingLeft	: imgWidth,
+							textWidth	: widthOfLinkBlocks-imgWidth
+						};
+					
+					imgWidths.push(img);
+					
 					imgCount++;
 				});
 				
@@ -45,8 +47,12 @@ $().ready(function() {
 				}
 				
 				$(helpfulLinks+' .links').css('width',widthOfLinkBlocks);
-				$(helpfulLinks+' .links > div').each(function(){
-					$('.helpful-link').css('width',widthOfLinkBlocks-iconWidths[count]);
+				
+				imgWidths.forEach(function(o){
+					$(helpfulLinks+' .links > a > span').css('width',o.textWidth);
+				})
+				$(helpfulLinks+' .links > a > span').css('width',imgWidths.textWidth);
+				$(helpfulLinks+' .links > a').each(function(){
 					if(eachLinkMarginLeftToCenterAmt[count] > 0){
 						$(this).css('margin-left',eachLinkMarginLeftToCenterAmt[count]);
 					}
