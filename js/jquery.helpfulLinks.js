@@ -7,18 +7,18 @@
 
 function createLinks(id, opts){
 	
-	var elements, count = 1;
+	var elements, count = 0;
 	
 	elements = "<div class='title'>"+opts.title+"</div>";
 	
 	opts.links.forEach(function(o) {
-		if(count<4){
+		if(count<3){
 		elements += "<div class='links'>";
 			elements += "<a class='helpful-link' href='"+o.url+"' title='"+o.title+"'><span>"+o.title+"</span>";
 				elements += "<img class='"+o.icon+"' src='images/spacer.png' alt='' />";
 			elements += "</a>";
 		elements += "</div>";
-		}else{ return console.log('Your links are greater then 4, therefore, it wasnt added to the DOM!'); }
+		}else{ return console.log('Your links are greater then 3, therefore, it wasnt added to the DOM!'); }
 		count++;
 
 	});

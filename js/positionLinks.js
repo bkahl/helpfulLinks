@@ -15,30 +15,28 @@ $().ready(function() {
 					howManyChildren = $(this).children().length,
 					howManyLinks = howManyChildren-1,
 					widthOfLinkBlocks,
-					containerLeftAndRightPaddingTotal = parseInt($(helpfulLinks).css('padding-left').split("px")[0],10)+parseInt($(helpfulLinks).css('padding-right').split("px")[0],10),
-					helpfulLinksTitleMarginRightAmt = parseInt($(helpfulLinks+' div').css('margin-right').split("px")[0],10)*howManyChildren,
+					containerPaddingLeft = parseInt($(helpfulLinks).css('padding-left'),10),
+					containerPaddingRight = parseInt($(helpfulLinks).css('padding-right'),10),
+					containerLeftAndRightPaddingTotal = containerPaddingLeft+containerPaddingRight,
+					helpfulLinksTitleMarginRightAmt = parseInt($(helpfulLinks+' div').css('margin-right'),10)*howManyChildren,
 					eachLinkMarginLeftToCenterAmt = [],
-					imgWidths = [],
 					maxAmtOfHelpfulLinks = 3,
-					i, count = 0, imgCount = 0;
+					i, count = 0;
 					
 				$(helpfulLinks+' > div').each(function(){
 					childWidths.push($(this).width());
 				});
 				
-				widthOfLinkBlocks = Math.floor(((((parentWidth-containerLeftAndRightPaddingTotal)-helpfulLinksTitleMarginRightAmt)-childWidths[0])/howManyLinks)-howManyLinks);
-				
-				$(helpfulLinks+' .helpful-link').each(function(){
-					var imgWidth = parseInt( $(this).css('padding-left'), 10 ),
-						img = {
-							paddingLeft	: imgWidth,
-							textWidth	: widthOfLinkBlocks-imgWidth
-						};
-					
-					imgWidths.push(img);
-					
-					imgCount++;
-				});
+				// subtract container padding left and right and addition 12 px from total allowed space for the helpful links 
+				// FROM the parent width and round down.	
+				widthOfLinkBlocks = Math.floor((parentWidth-containerLeftAndRightPaddingTotal)-12);
+
+				// subtract the value of the title width and title margin right from the current width value of widthOfLinkBlocks because this value
+				// isn't apart of the calculation.
+				widthOfLinkBlocks = Math.floor(widthOfLinkBlocks-(helpfulLinksTitleMarginRightAmt+childWidths[0]));
+
+				// divide how many links used by the remaining widthOfLinkBlocks width to get width of each block.
+				widthOfLinkBlocks = Math.floor(widthOfLinkBlocks/howManyLinks);
 				
 				for(i=1;i<howManyChildren;i++){
 					if(i<=maxAmtOfHelpfulLinks){
@@ -48,11 +46,6 @@ $().ready(function() {
 				
 				$(helpfulLinks+' .links').css('width',widthOfLinkBlocks);
 				
-				imgWidths.forEach(function(o){
-					$(helpfulLinks+' .links > a > span').css('width',o.textWidth);
-				});
-				
-				$(helpfulLinks+' .links > a > span').css('width',imgWidths.textWidth);
 				$(helpfulLinks+' .links > a').each(function(){
 					if(eachLinkMarginLeftToCenterAmt[count] > 0){
 						$(this).css('margin-left',eachLinkMarginLeftToCenterAmt[count]);

@@ -58,7 +58,7 @@ a{ text-decoration: none; }
 	height: 20px;
 	padding: 5px;
 	background: #eff4f8;
-	font-size: 13px;
+	font-size: 12px;
 	line-height: 20px;
 }
 
@@ -67,7 +67,7 @@ a{ text-decoration: none; }
 }
 
 .helpful-links.horizontal > div{
-	margin-right: 10px;
+	margin-right: 5px;
 }
 
 .helpful-links.horizontal .links,
@@ -79,6 +79,13 @@ a{ text-decoration: none; }
 
 .helpful-links.horizontal .title{
 	color: #8a8a8a;
+	font-weight: bold;
+	position: relative;
+	bottom: 5px;
+}
+
+.chrome .helpful-links.horizontal .title{
+	bottom: 0px;
 }
 
 .helpful-links.horizontal .links a{
@@ -87,7 +94,7 @@ a{ text-decoration: none; }
 
 .helpful-link{
     display: block;
-    padding: 0 0 0 22px;
+    padding: 0 0 0 20px;
     position: relative;
 }
 
